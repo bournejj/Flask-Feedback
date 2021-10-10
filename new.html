@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1 class='display-1'>Hi {{user.username}}</h1>
+
+
+<div class='container'>
+    <form method='POST' class='form-control-sm'>
+        <h1>Feedback</h1>
+
+
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden' %}
+
+        {{ field.label }} {{ field(class_="form-control") }}
+
+        {% for error in field.errors %} {{ error }}
+
+        {% endfor %}
+
+        {% endfor %}
+
+        <br>
+
+        <button class="btn btn-primary">Add</button>
+    </form>
+
+</div>
+
+{% endblock %}
